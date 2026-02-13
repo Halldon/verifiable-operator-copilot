@@ -1,9 +1,22 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "wallet": {
     "network": "base",
     "chainId": 8453,
     "custodyMode": "agent-keystore+keychain-passphrase"
+  },
+  "sovereignty": {
+    "mode": "local-agent-key",
+    "strictMode": false,
+    "contractControl": {
+      "chainId": 8453,
+      "rpcEnv": "BASE_RPC_URL",
+      "rpcUrl": "",
+      "authorityContract": "",
+      "approvalFunction": "isActionApproved",
+      "consumedFunction": "isActionConsumed",
+      "notes": "In contract-controlled mode, treasury execution must be approved onchain and executed by contract-owned treasury/safe module."
+    }
   },
   "execution": {
     "preferGasless": true,

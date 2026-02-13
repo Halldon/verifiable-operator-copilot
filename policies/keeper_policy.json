@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "eligibility": {
+    "mode": "permissionless-stake-threshold",
+    "minStake": "1000",
+    "stakeUnit": "mock-wei",
+    "registryPath": "governance/keeper-registry.json",
+    "disallowSlashed": true
+  },
+  "antiReplay": {
+    "statePath": "governance/keeper-state.json",
+    "enforceStrictNonceIncrement": true,
+    "maxSkewSeconds": 600
+  },
+  "boundedActions": {
+    "anchor_provenance": {
+      "maxCalldataBytes": 128,
+      "allowedChains": [8453]
+    },
+    "treasury_execute": {
+      "maxNativeWei": "5000000000000000",
+      "allowlistedRecipients": [
+        "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD"
+      ]
+    }
+  }
+}

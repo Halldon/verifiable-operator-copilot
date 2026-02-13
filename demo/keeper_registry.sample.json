@@ -1,0 +1,11 @@
+{
+  "keepers": {
+    "0x1000000000000000000000000000000000000001": {
+      "stake": "5000",
+      "slashed": false,
+      "metadata": {
+        "label": "sample-keeper-1"
+      }
+    }
+  }
+}

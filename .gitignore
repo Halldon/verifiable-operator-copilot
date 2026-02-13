@@ -10,3 +10,5 @@ artifacts/debate/runs/
 artifacts/debate/inbox/
 artifacts/debate/processed/
 artifacts/debate/failed/
+artifacts/sovereignty-tests/
+test/.tmp-*/
