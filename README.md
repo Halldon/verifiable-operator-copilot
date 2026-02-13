@@ -109,4 +109,9 @@ npm run treasury:transfer -- --recipient <allowlisted_addr> --rpc <base_rpc_url>
 ```
 Use `--dry-run` first.
 
-> Note: direct funding of external credit accounts still needs provider-specific destination/API wiring; this repo now supports sovereign custody + policy-bound signed intents + onchain transfer execution.
+Gasless-first mode:
+- Configure `policies/treasury_policy.json` → `execution.gaslessRelay.relayUrl`
+- Set env var `ETHGAS_API_KEY` (or the configured `apiKeyEnv`)
+- Executor will try gasless relay first, then fallback onchain if enabled.
+
+> Note: direct funding of external credit accounts still needs provider-specific destination/API wiring; this repo now supports sovereign custody + policy-bound signed intents + gasless-first/onchain-fallback execution.

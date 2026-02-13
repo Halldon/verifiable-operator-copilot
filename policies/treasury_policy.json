@@ -5,6 +5,15 @@
     "chainId": 8453,
     "custodyMode": "agent-keystore+keychain-passphrase"
   },
+  "execution": {
+    "preferGasless": true,
+    "gaslessRelay": {
+      "name": "ETHGas/Open Gas",
+      "relayUrl": "",
+      "apiKeyEnv": "ETHGAS_API_KEY"
+    },
+    "fallbackOnchain": true
+  },
   "limits": {
     "maxUsdPerDay": 25,
     "maxUsdPerTx": 5,
