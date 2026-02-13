@@ -12,7 +12,8 @@
     "gov:bootstrap": "node src/bootstrap_approvers.js",
     "treasury:bootstrap": "node src/treasury_bootstrap.js",
     "treasury:sign-intent": "node src/treasury_sign_funding_intent.js",
-    "treasury:autofund": "node src/treasury_autofund_cycle.js"
+    "treasury:autofund": "node src/treasury_autofund_cycle.js",
+    "treasury:transfer": "node src/treasury_execute_transfer.js"
   },
   "keywords": [],
   "author": "",

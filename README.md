@@ -98,4 +98,15 @@ npm run treasury:autofund
 ```
 If credits are below threshold, it signs a funding intent and appends to `treasury/funding-intents.jsonl`.
 
-> Note: live transfer execution to external credit provider requires provider API/webhook integration; this repo now handles sovereign custody + signed, policy-bound funding intents.
+### Execute transfer from treasury wallet (policy-gated)
+Native transfer:
+```bash
+npm run treasury:transfer -- --recipient <allowlisted_addr> --rpc <base_rpc_url> --native 0.001
+```
+ERC20 transfer:
+```bash
+npm run treasury:transfer -- --recipient <allowlisted_addr> --rpc <base_rpc_url> --token <erc20_addr> --amount <raw_units>
+```
+Use `--dry-run` first.
+
+> Note: direct funding of external credit accounts still needs provider-specific destination/API wiring; this repo now supports sovereign custody + policy-bound signed intents + onchain transfer execution.
