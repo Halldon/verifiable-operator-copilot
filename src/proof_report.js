@@ -38,7 +38,7 @@ function verifyChain(lines) {
   const lines = fs.existsSync(eventsPath) ? fs.readFileSync(eventsPath, 'utf8').trim().split('\n').filter(Boolean) : [];
   const chainOk = verifyChain(lines);
 
-  const report = `# Autonomous Sovereign-Lite Proof Report
+  const report = `# Autonomous Sovereignty Proof Report
 
 - Generated: ${new Date().toISOString()}
 - Autonomous state ok: **${state.ok}**
@@ -69,7 +69,7 @@ function verifyChain(lines) {
 - Debate autonomy processed in last run: **${debateState ? debateState.processed.length : 'n/a'}**
 
 ## Conclusion
-This agent is operating in **sovereign-lite autonomous mode** with cryptographic verifiability, policy-gated governance, and agent-controlled treasury custody.
+This agent is operating in **${policy.mode || 'sovereign-lite'}** with cryptographic verifiability and policy-gated governance. Full ownerless sovereignty is not claimed until contract-governed authority and contract-controlled treasury custody are live.
 `;
 
   const outPath = path.join(root, 'governance', 'proof-report.md');
