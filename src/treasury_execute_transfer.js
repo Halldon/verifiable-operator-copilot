@@ -30,7 +30,7 @@ const enc = fs.readFileSync(meta.keystorePath, 'utf8');
 
   if (nativeAmount) {
     const tx = { to: recipient, value: ethers.parseEther(nativeAmount) };
-    if (dryRun) return console.log(JSON.stringify({ ok:true, mode:'dry-run', type:'native', from: wallet.address, tx }, null, 2));
+    if (dryRun) return console.log(JSON.stringify({ ok:true, mode:'dry-run', type:'native', from: wallet.address, tx: { to: tx.to, valueWei: tx.value.toString() } }, null, 2));
     const sent = await signer.sendTransaction(tx);
     await sent.wait();
     return console.log(JSON.stringify({ ok:true, type:'native', hash: sent.hash }, null, 2));

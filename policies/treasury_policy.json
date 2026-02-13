@@ -9,13 +9,13 @@
     "maxUsdPerDay": 25,
     "maxUsdPerTx": 5,
     "allowedRecipients": [
-      "EIGEN_CREDITS_FUNDING_ADDRESS_PLACEHOLDER"
+      "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD"
     ]
   },
   "autofund": {
     "enabled": true,
-    "targetService": "eigencompute",
-    "minCreditsThreshold": 20,
+    "targetService": "eigenai-grant",
+    "minCreditsThreshold": 200000,
     "topupUsd": 5,
     "checkIntervalSeconds": 1800
   }

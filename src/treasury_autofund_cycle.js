@@ -2,33 +2,39 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { status } = require('./eigenai_grant_ops');
 
 const root = path.resolve(__dirname, '..');
 const policy = JSON.parse(fs.readFileSync(path.join(root, 'policies', 'treasury_policy.json'), 'utf8'));
-
-// Placeholder credit probe (replace with real EigenCompute credit API call when available)
-function getCurrentCredits() {
-  const p = path.join(root, 'treasury', 'mock-credits.json');
-  if (!fs.existsSync(p)) return 0;
-  return Number(JSON.parse(fs.readFileSync(p, 'utf8')).credits || 0);
-}
+const logPath = path.join(root, 'treasury', 'funding-intents.jsonl');
 
 if (!policy.autofund.enabled) {
   console.log(JSON.stringify({ ok:true, action:'noop', reason:'autofund disabled' }, null, 2));
   process.exit(0);
 }
 
-const credits = getCurrentCredits();
-if (credits >= Number(policy.autofund.minCreditsThreshold || 0)) {
-  console.log(JSON.stringify({ ok:true, action:'noop', reason:'credits healthy', credits }, null, 2));
-  process.exit(0);
-}
+(async()=>{
+  const s = await status();
+  const credits = Number(s.grant?.tokenCount || 0);
+  const threshold = Number(policy.autofund.minCreditsThreshold || 0);
 
-const recipient = policy.limits.allowedRecipients[0];
-if (!recipient || recipient.includes('PLACEHOLDER')) {
-  console.log(JSON.stringify({ ok:false, action:'blocked', reason:'recipient placeholder not configured' }, null, 2));
-  process.exit(1);
-}
+  if (credits >= threshold) {
+    console.log(JSON.stringify({ ok:true, action:'noop', reason:'grant credits healthy', credits, threshold }, null, 2));
+    return;
+  }
 
-execSync(`node src/treasury_sign_funding_intent.js --recipient ${recipient} --usd ${policy.autofund.topupUsd} --reason low-credits`, { cwd: root, stdio: 'inherit' });
-console.log(JSON.stringify({ ok:true, action:'signed_funding_intent', credits }, null, 2));
+  // for grant mode, we can't force top-up onchain today; create signed sovereign intent for manual/provider workflow
+  const recipient = policy.limits.allowedRecipients[0];
+  execSync(`node src/treasury_sign_funding_intent.js --recipient ${recipient} --usd ${policy.autofund.topupUsd} --reason grant-credits-low`, { cwd: root, stdio: 'inherit' });
+
+  const reminder = {
+    ts: new Date().toISOString(),
+    kind: 'grant_refill_required',
+    credits,
+    threshold,
+    note: 'EigenAI grant credits below threshold; refresh/request more grant tokens via provider flow.'
+  };
+  fs.appendFileSync(logPath, JSON.stringify(reminder) + '\n');
+
+  console.log(JSON.stringify({ ok:true, action:'signed_funding_intent_and_logged_refill', credits, threshold }, null, 2));
+})();

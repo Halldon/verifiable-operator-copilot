@@ -1,6 +1,6 @@
 {
   "manifestVersion": "1.0.0",
-  "generatedAt": "2026-02-13T21:14:00.207Z",
+  "generatedAt": "2026-02-13T21:34:16.744Z",
   "code": {
     "entrypoint": "/Users/j/.openclaw/workspace/verifiable-operator-copilot/src/run_agent.js",
     "sha256": "5b88af5e3cca63f9fee9bf36c840fc8d3da310f55afb91c965b07b2eb18d7c00",
@@ -12,7 +12,7 @@
   },
   "output": {
     "path": "/Users/j/.openclaw/workspace/verifiable-operator-copilot/artifacts/agent_output.json",
-    "sha256": "81f278f5514c0ccece584b3e6d5c8047fe011ffccf664cd8fe199a3b4e5ab3c5"
+    "sha256": "8c4534fc65c283cdc37a5ab54435f2f39203ce0fd771c55bfacb9955f427a1ed"
   },
   "upgradePolicy": {
     "policyFile": "/Users/j/.openclaw/workspace/verifiable-operator-copilot/policies/upgrade_policy.json",

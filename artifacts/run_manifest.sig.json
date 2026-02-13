@@ -1,8 +1,8 @@
 {
-  "signedAt": "2026-02-13T21:14:00.970Z",
+  "signedAt": "2026-02-13T21:34:18.274Z",
   "signerAddress": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
   "recoveredAddress": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
-  "message": "Eigen-style verifiable agent run\nmanifest_sha256:417ef2a8d6fae86a990d1b1b8c9d95ff07a4ba16527100e468734e7fa072e95c",
-  "signature": "0xab9b396866074e35e4e78cb0d47f8402f4f826b518b5093fab32e92d05b4399b2d8fce27d2ba658c496b2846d90d514b56fc67d0692ff69034e80abf23552e2d1b",
+  "message": "Eigen-style verifiable agent run\nmanifest_sha256:715759409683c2c6d79cb711d4fdb653bc73947eedca22158945bbe8d0da2b84",
+  "signature": "0x0fc94f2ae17c7bc0cf29e6bb051a745266d225d861b725744775e54933fc4eee1d059ea6ec8c81ac03b1900a34ed2cc02b7c52d338239e2c7f3b318ee493cdaf1c",
   "signerSource": "treasury-keystore"
 }

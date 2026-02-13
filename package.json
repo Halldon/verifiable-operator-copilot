@@ -13,7 +13,13 @@
     "treasury:bootstrap": "node src/treasury_bootstrap.js",
     "treasury:sign-intent": "node src/treasury_sign_funding_intent.js",
     "treasury:autofund": "node src/treasury_autofund_cycle.js",
-    "treasury:transfer": "node src/treasury_execute_transfer.js"
+    "treasury:transfer": "node src/treasury_execute_transfer.js",
+    "eigenai:status": "node src/eigenai_grant_ops.js status",
+    "eigenai:smoke": "node src/eigenai_grant_ops.js smoke",
+    "auto:once": "node src/autonomous_once.js",
+    "auto:watchdog": "node src/autonomous_watchdog.js",
+    "proof:report": "node src/proof_report.js",
+    "auto:prove": "npm run auto:once && npm run proof:report"
   },
   "keywords": [],
   "author": "",

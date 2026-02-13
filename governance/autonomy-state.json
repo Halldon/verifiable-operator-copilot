@@ -1,0 +1,51 @@
+{
+  "startedAt": "2026-02-13T21:34:14.675Z",
+  "ok": true,
+  "steps": [
+    {
+      "step": "grant_status",
+      "data": {
+        "address": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+        "grant": {
+          "success": true,
+          "tokenCount": 999960,
+          "address": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+          "hasGrant": true
+        }
+      }
+    },
+    {
+      "step": "run_cycle"
+    },
+    {
+      "step": "autofund_check"
+    },
+    {
+      "step": "autofund_check",
+      "ok": true
+    },
+    {
+      "step": "inference_smoke",
+      "data": {
+        "address": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+        "grant": {
+          "success": true,
+          "tokenCount": 999960,
+          "address": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+          "hasGrant": true
+        },
+        "inference": {
+          "id": "019c58ed-2919-7397-9082-b951a892e285",
+          "model": "gpt-oss-120b-f16",
+          "usage": {
+            "completion_tokens": 24,
+            "prompt_tokens": 73,
+            "total_tokens": 97
+          },
+          "hasSignature": true
+        }
+      }
+    }
+  ],
+  "finishedAt": "2026-02-13T21:34:24.276Z"
+}
