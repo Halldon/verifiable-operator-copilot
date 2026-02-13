@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-02-13T21:06:27.921Z",
+  "runAt": "2026-02-13T21:14:00.101Z",
   "policyVersion": "1.0.0",
   "objective": "Rank operator attention and recommend immediate actions",
   "top3": [

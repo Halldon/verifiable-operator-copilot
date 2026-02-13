@@ -1,8 +1,8 @@
 {
-  "signedAt": "2026-02-13T21:06:28.246Z",
-  "signerAddress": "0x4AB73f1F3ad5Ad3b0fDb70F99989d74AA0c484c3",
-  "recoveredAddress": "0x4AB73f1F3ad5Ad3b0fDb70F99989d74AA0c484c3",
-  "message": "Eigen-style verifiable agent run\nmanifest_sha256:4bc296831737ab8974cf75f1b14122fe66376d9c327a388e13b63486886f22af",
-  "signature": "0x9343643a13073f37d3b29ba1115a950025150c765217ff7bdac94ec59e1a737d5b73bf3a3d731127421527e38a76653f1b67b017a152a64ebef0a812e5ff68b61b",
-  "walletFile": "agent-wallet-2026-02-13T17-35-31-934Z.json"
+  "signedAt": "2026-02-13T21:14:00.970Z",
+  "signerAddress": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+  "recoveredAddress": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+  "message": "Eigen-style verifiable agent run\nmanifest_sha256:417ef2a8d6fae86a990d1b1b8c9d95ff07a4ba16527100e468734e7fa072e95c",
+  "signature": "0xab9b396866074e35e4e78cb0d47f8402f4f826b518b5093fab32e92d05b4399b2d8fce27d2ba658c496b2846d90d514b56fc67d0692ff69034e80abf23552e2d1b",
+  "signerSource": "treasury-keystore"
 }
