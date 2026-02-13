@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "agentName": "Verifiable Operator Copilot",
+  "mode": "sovereign-lite",
+  "governance": {
+    "approvers": ["james", "ops-peer", "safety-peer"],
+    "threshold": 2,
+    "defaultTimelockSeconds": 3600
+  },
+  "runtime": {
+    "autonomousIntervalSeconds": 1800,
+    "maxSpendUsdPerDay": 0,
+    "allowedActions": [
+      "read_snapshot",
+      "rank_attention",
+      "emit_manifest",
+      "append_provenance_log"
+    ],
+    "forbiddenActions": [
+      "delete_files",
+      "exfiltrate_secrets",
+      "self_modify_without_governance"
+    ]
+  }
+}

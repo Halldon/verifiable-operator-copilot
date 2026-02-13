@@ -1,0 +1,15 @@
+{
+  "proposalId": "prop-1771016575311",
+  "title": "Test sovereign-lite upgrade",
+  "reason": "validation",
+  "targetPath": "src/run_agent.js",
+  "codeHash": "5b88af5e3cca63f9fee9bf36c840fc8d3da310f55afb91c965b07b2eb18d7c00",
+  "createdAt": "2026-02-13T21:02:55.313Z",
+  "effectiveAfter": "2026-02-13T21:02:57.314Z",
+  "status": "enacted",
+  "enactedAt": "2026-02-13T21:03:04.332Z",
+  "enactedByApprovers": [
+    "james",
+    "ops-peer"
+  ]
+}
