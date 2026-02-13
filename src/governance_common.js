@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
+const { sha256Hex } = require('./hash_utils');
 
 const root = path.resolve(__dirname, '..');
 const govDir = path.join(root, 'governance');
@@ -14,7 +14,7 @@ function ensureDirs() {
 }
 
 function sha(input) {
-  return crypto.createHash('sha256').update(input).digest('hex');
+  return sha256Hex(input);
 }
 
 function nowIso() { return new Date().toISOString(); }

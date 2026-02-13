@@ -12,6 +12,11 @@ const approver = get('--approver');
 if (!proposalId || !approver) throw new Error('Usage: --proposal <id> --approver <name>');
 
 const policy = readPolicy();
+const authorityMode = get('--authority-mode', policy.governance?.authorityMode || 'local-threshold');
+if (authorityMode === 'contract') {
+  throw new Error('Local approve path is disabled in contract authority mode. Approvals must happen onchain via governor/timelock.');
+}
+
 const addrMap = policy.governance.approverAddresses || {};
 if (!addrMap[approver]) throw new Error('Approver not allowed by policy/addresses');
 
@@ -19,6 +24,10 @@ const proposalPath = path.join(proposalsDir, `${proposalId}.json`);
 if (!fs.existsSync(proposalPath)) throw new Error('Proposal not found');
 
 const proposal = JSON.parse(fs.readFileSync(proposalPath, 'utf8'));
+if (proposal.authorityMode === 'contract') {
+  throw new Error('This proposal is contract-governed. Do not use local approval signatures.');
+}
+
 const message = `approve:${proposal.proposalId}:${proposal.codeHash}:${proposal.effectiveAfter}`;
 
 const secretsPath = path.join(path.resolve(__dirname, '..'), 'governance', 'approver-local-secrets.json');

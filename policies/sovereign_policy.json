@@ -1,8 +1,10 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "agentName": "Verifiable Operator Copilot",
-  "mode": "sovereign-lite",
+  "mode": "sovereign-hardening",
+  "claimBoundary": "sovereign-lite-until-onchain-governance-and-contract-treasury-are-live",
   "governance": {
+    "authorityMode": "local-threshold",
     "approvers": [
       "james",
       "ops-peer",
@@ -14,6 +16,17 @@
       "james": "0x2ACE487D19093FEE23BfBe7A89e77d3C20ceee50",
       "ops-peer": "0xa8b613044D82F4B1EcCc2A54C2922d484cA14F03",
       "safety-peer": "0x233a19a2c9E389b4C14C20B9c22Fcc35E9eA402b"
+    },
+    "contractAuthority": {
+      "chainId": 8453,
+      "rpcEnv": "BASE_RPC_URL",
+      "rpcUrl": "",
+      "governorAddress": "",
+      "timelockAddress": "",
+      "requiredStates": [
+        7
+      ],
+      "notes": "Set authorityMode=contract only after governor/timelock are deployed and configured. Required state 7 maps to Executed in OpenZeppelin Governor."
     }
   },
   "runtime": {
