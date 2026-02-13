@@ -3,9 +3,18 @@
   "agentName": "Verifiable Operator Copilot",
   "mode": "sovereign-lite",
   "governance": {
-    "approvers": ["james", "ops-peer", "safety-peer"],
+    "approvers": [
+      "james",
+      "ops-peer",
+      "safety-peer"
+    ],
     "threshold": 2,
-    "defaultTimelockSeconds": 3600
+    "defaultTimelockSeconds": 3600,
+    "approverAddresses": {
+      "james": "0x2ACE487D19093FEE23BfBe7A89e77d3C20ceee50",
+      "ops-peer": "0xa8b613044D82F4B1EcCc2A54C2922d484cA14F03",
+      "safety-peer": "0x233a19a2c9E389b4C14C20B9c22Fcc35E9eA402b"
+    }
   },
   "runtime": {
     "autonomousIntervalSeconds": 1800,

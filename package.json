@@ -8,7 +8,8 @@
     "run:cycle": "node src/run_sovereign_cycle.js",
     "gov:propose": "node src/propose_upgrade.js",
     "gov:approve": "node src/approve_upgrade.js",
-    "gov:enact": "node src/enact_upgrade.js"
+    "gov:enact": "node src/enact_upgrade.js",
+    "gov:bootstrap": "node src/bootstrap_approvers.js"
   },
   "keywords": [],
   "author": "",

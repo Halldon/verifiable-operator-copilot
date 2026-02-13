@@ -1,8 +1,8 @@
 {
-  "signedAt": "2026-02-13T21:03:04.840Z",
+  "signedAt": "2026-02-13T21:06:28.246Z",
   "signerAddress": "0x4AB73f1F3ad5Ad3b0fDb70F99989d74AA0c484c3",
   "recoveredAddress": "0x4AB73f1F3ad5Ad3b0fDb70F99989d74AA0c484c3",
-  "message": "Eigen-style verifiable agent run\nmanifest_sha256:ae14d175d870d454362d2479a344eefa8af64f62d881573f7bfb883ca55e8a21",
-  "signature": "0xdf94cc19eb0040c60a50d7872aa22008b7a170ed26ecd6356485c1fc4f1146d27ab95549be76886da4978b7ef877994b169be461121ccf059b02aeeaf9f39b161c",
+  "message": "Eigen-style verifiable agent run\nmanifest_sha256:4bc296831737ab8974cf75f1b14122fe66376d9c327a388e13b63486886f22af",
+  "signature": "0x9343643a13073f37d3b29ba1115a950025150c765217ff7bdac94ec59e1a737d5b73bf3a3d731127421527e38a76653f1b67b017a152a64ebef0a812e5ff68b61b",
   "walletFile": "agent-wallet-2026-02-13T17-35-31-934Z.json"
 }

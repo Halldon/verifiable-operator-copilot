@@ -1,0 +1,16 @@
+{
+  "proposalId": "prop-1771016778714",
+  "title": "Signed threshold test",
+  "reason": "sovereign-lite hardening",
+  "targetPath": "src/run_agent.js",
+  "codeHash": "5b88af5e3cca63f9fee9bf36c840fc8d3da310f55afb91c965b07b2eb18d7c00",
+  "createdAt": "2026-02-13T21:06:18.715Z",
+  "effectiveAfter": "2026-02-13T21:06:20.716Z",
+  "status": "enacted",
+  "enactedAt": "2026-02-13T21:06:27.706Z",
+  "enactedByApprovers": [
+    "james",
+    "safety-peer"
+  ],
+  "enactedWithSignedThreshold": true
+}

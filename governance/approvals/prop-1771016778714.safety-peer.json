@@ -1,0 +1,8 @@
+{
+  "proposalId": "prop-1771016778714",
+  "approver": "safety-peer",
+  "approverAddress": "0x233a19a2c9E389b4C14C20B9c22Fcc35E9eA402b",
+  "approvedAt": "2026-02-13T21:06:24.402Z",
+  "message": "approve:prop-1771016778714:5b88af5e3cca63f9fee9bf36c840fc8d3da310f55afb91c965b07b2eb18d7c00:2026-02-13T21:06:20.716Z",
+  "signature": "0x5ecec2126dc485f96a805c979214c1434dd719eb7ec945efcea8682524928a97282f846877ea4cc3927ea9f672868b75e117eecfa20f9ab7c7990bc877d64ff11c"
+}
