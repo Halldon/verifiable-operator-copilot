@@ -9,7 +9,10 @@
     "gov:propose": "node src/propose_upgrade.js",
     "gov:approve": "node src/approve_upgrade.js",
     "gov:enact": "node src/enact_upgrade.js",
-    "gov:bootstrap": "node src/bootstrap_approvers.js"
+    "gov:bootstrap": "node src/bootstrap_approvers.js",
+    "treasury:bootstrap": "node src/treasury_bootstrap.js",
+    "treasury:sign-intent": "node src/treasury_sign_funding_intent.js",
+    "treasury:autofund": "node src/treasury_autofund_cycle.js"
   },
   "keywords": [],
   "author": "",

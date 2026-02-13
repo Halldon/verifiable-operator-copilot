@@ -1,3 +1,5 @@
 node_modules/
 .DS_Store
 governance/approver-local-secrets.json
+treasury/*
+!treasury/.gitkeep

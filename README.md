@@ -65,3 +65,37 @@ Governance/provenance files:
 - `governance/events.jsonl` (hash-chained append-only log)
 
 This is **sovereign-lite** (owner-minimized process controls), not fully ownerless sovereignty.
+
+---
+
+## Agent-owned treasury (max sovereignty in this environment)
+
+### Bootstrap treasury wallet custody
+```bash
+npm run treasury:bootstrap
+```
+Creates:
+- encrypted keystore at `treasury/agent-treasury-keystore.json`
+- metadata at `treasury/agent-treasury-meta.json`
+- passphrase stored in macOS Keychain (`security`), not plain text in repo
+
+### Configure funding recipient
+Edit `policies/treasury_policy.json` and replace:
+- `EIGEN_CREDITS_FUNDING_ADDRESS_PLACEHOLDER`
+
+### Sign funding intent (policy-gated)
+```bash
+npm run treasury:sign-intent -- --recipient <address> --usd 5 --reason low-credits
+```
+This enforces:
+- allowlisted recipient
+- max USD per tx from policy
+- key custody via encrypted keystore + keychain passphrase
+
+### Autonomous autofund cycle
+```bash
+npm run treasury:autofund
+```
+If credits are below threshold, it signs a funding intent and appends to `treasury/funding-intents.jsonl`.
+
+> Note: live transfer execution to external credit provider requires provider API/webhook integration; this repo now handles sovereign custody + signed, policy-bound funding intents.

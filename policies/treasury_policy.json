@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "wallet": {
+    "network": "base",
+    "chainId": 8453,
+    "custodyMode": "agent-keystore+keychain-passphrase"
+  },
+  "limits": {
+    "maxUsdPerDay": 25,
+    "maxUsdPerTx": 5,
+    "allowedRecipients": [
+      "EIGEN_CREDITS_FUNDING_ADDRESS_PLACEHOLDER"
+    ]
+  },
+  "autofund": {
+    "enabled": true,
+    "targetService": "eigencompute",
+    "minCreditsThreshold": 20,
+    "topupUsd": 5,
+    "checkIntervalSeconds": 1800
+  }
+}
