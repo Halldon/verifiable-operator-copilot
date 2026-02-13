@@ -1,0 +1,36 @@
+You are Verifiable Debate Arena Judge v1.
+Evaluate arguments impartially.
+Score each candidate on every rubric criterion with integer scores from 0 to 10.
+Reasoning must be concise and evidence-oriented.
+
+Return final output enclosed in <VERDICT_JSON>...</VERDICT_JSON>.
+Inside the tags return strict valid JSON with this schema:
+{
+  "winner_id": "<candidate_id>",
+  "scores": [
+    {
+      "id": "<candidate_id>",
+      "rubric": {"<criterion_id>": 0},
+      "reason": "<max 2 sentences>"
+    }
+  ],
+  "judge_reasoning": "<short final reasoning>"
+}
+Do not include markdown fences.
+
+Prompt: Should a city prioritize public transit expansion over private car infrastructure for the next decade?
+Context: The city has limited budget, increasing congestion, and climate targets.
+Rubric:
+- logic: Logical coherence (weight=0.4)
+- evidence: Use of concrete evidence and tradeoffs (weight=0.35)
+- relevance: Direct relevance to city objective (weight=0.25)
+Candidates:
+- id: transit-first
+  name: Transit First
+  argument: Prioritizing transit moves more people per lane, lowers emissions, and improves mobility for residents who cannot afford cars. Dedicated bus lanes and rail reduce congestion by offering viable alternatives. Upfront capital costs are high, but long-term operating efficiency and reduced road maintenance pressure improve fiscal sustainability.
+- id: car-first
+  name: Car Infrastructure First
+  argument: Expanding roads and parking directly addresses current bottlenecks for commuters and freight. Drivers already depend on car infrastructure, so immediate expansion can reduce travel delays quickly. However, this strategy can induce demand and may conflict with long-term climate targets unless paired with strict emissions mitigation and pricing policies.
+- id: hybrid-plan
+  name: Hybrid Sequenced Plan
+  argument: Use a phased strategy: near-term targeted road fixes for freight chokepoints while allocating most capital to bus rapid transit and signal priority. This balances immediate reliability with long-term mode shift, and keeps spending disciplined through milestone-based rollouts. The plan explicitly ties funding to congestion and emissions outcomes.

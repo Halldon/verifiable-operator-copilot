@@ -1,0 +1,79 @@
+{
+  "verdictVersion": "1.0.0",
+  "deterministicVerdict": {
+    "winnerId": "hybrid-plan",
+    "modelWinnerId": "hybrid-plan",
+    "rubric": [
+      {
+        "id": "logic",
+        "label": "Logical coherence",
+        "weight": 0.4
+      },
+      {
+        "id": "evidence",
+        "label": "Use of concrete evidence and tradeoffs",
+        "weight": 0.35
+      },
+      {
+        "id": "relevance",
+        "label": "Direct relevance to city objective",
+        "weight": 0.25
+      }
+    ],
+    "scores": [
+      {
+        "id": "transit-first",
+        "name": "Transit First",
+        "overall": 6.95,
+        "rubric": {
+          "logic": 8,
+          "evidence": 5,
+          "relevance": 8
+        },
+        "reason": "Argument is coherent and aligns with climate and congestion goals, but lacks concrete data to substantiate claims."
+      },
+      {
+        "id": "car-first",
+        "name": "Car Infrastructure First",
+        "overall": 6.05,
+        "rubric": {
+          "logic": 7,
+          "evidence": 5,
+          "relevance": 6
+        },
+        "reason": "Logical focus on immediate capacity relief, yet provides limited evidence and conflicts with long‑term climate objectives."
+      },
+      {
+        "id": "hybrid-plan",
+        "name": "Hybrid Sequenced Plan",
+        "overall": 7.95,
+        "rubric": {
+          "logic": 9,
+          "evidence": 6,
+          "relevance": 9
+        },
+        "reason": "Well‑structured phased approach that directly ties spending to congestion and emissions outcomes, offering the most relevant and logically robust solution."
+      }
+    ],
+    "judgeReasoning": "The hybrid plan best balances short‑term congestion relief with long‑term climate targets while maintaining fiscal discipline, earning the highest weighted score."
+  },
+  "metadata": {
+    "runId": "replay-2",
+    "generatedAt": "2026-02-13T21:58:55.916Z",
+    "startedAt": "2026-02-13T21:58:49.384Z",
+    "model": "gpt-oss-120b-f16",
+    "seed": 2026,
+    "responseId": "019c5903-8a42-7c52-a220-e96cff559fcb",
+    "chainId": 1,
+    "promptHash": "b56b91bb53bada5d595701ca2f976131068915def5e9e7ba140158a0cd7aec1e",
+    "inputHash": "4c830af5a7279af75aa9dbdd379b4dad93cf696bab21b9bd9091c9759d93c495",
+    "outputHash": "ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee",
+    "candidateCount": 3,
+    "rubricCount": 3,
+    "usage": {
+      "completion_tokens": 721,
+      "prompt_tokens": 506,
+      "total_tokens": 1227
+    }
+  }
+}

@@ -22,22 +22,39 @@ async function getGrantMessage(address) {
   return r.json();
 }
 
-async function runInference(wallet, prompt='Reply exactly: AGENT_OK', model='gpt-oss-120b-f16') {
+async function runInference(wallet, promptOrOptions = 'Reply exactly: AGENT_OK', model = 'gpt-oss-120b-f16') {
+  const opts = (promptOrOptions && typeof promptOrOptions === 'object' && !Array.isArray(promptOrOptions))
+    ? promptOrOptions
+    : { prompt: promptOrOptions, model };
+
   const gm = await getGrantMessage(wallet.address);
   const sig = await wallet.signMessage(gm.message);
+
   const payload = {
-    messages: [{ role: 'user', content: prompt }],
-    model,
-    max_tokens: 24,
-    seed: 42,
+    messages: opts.messages || [{ role: 'user', content: String(opts.prompt || 'Reply exactly: AGENT_OK') }],
+    model: opts.model || model || 'gpt-oss-120b-f16',
+    max_tokens: Number(opts.max_tokens ?? opts.maxTokens ?? 24),
+    seed: Number(opts.seed ?? 42),
     grantMessage: gm.message,
     grantSignature: sig,
     walletAddress: wallet.address
   };
+
+  if (opts.temperature !== undefined) payload.temperature = Number(opts.temperature);
+  if (opts.top_p !== undefined) payload.top_p = Number(opts.top_p);
+
   const r = await fetch('https://determinal-api.eigenarcade.com/api/chat/completions', {
-    method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload)
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(payload)
   });
-  return r.json();
+
+  const json = await r.json();
+  if (!r.ok) {
+    const msg = json?.error?.message || json?.message || `EigenAI request failed with status ${r.status}`;
+    throw new Error(msg);
+  }
+  return json;
 }
 
 async function status() {
@@ -50,12 +67,21 @@ async function smoke() {
   const wallet = await loadWallet();
   const grant = await checkGrant(wallet.address);
   const inf = await runInference(wallet);
-  return { address: wallet.address, grant, inference: { id: inf.id, model: inf.model, usage: inf.usage, hasSignature: !!inf.signature } };
+  return {
+    address: wallet.address,
+    grant,
+    inference: {
+      id: inf.id,
+      model: inf.model,
+      usage: inf.usage,
+      hasSignature: !!inf.signature
+    }
+  };
 }
 
 module.exports = { loadWallet, checkGrant, getGrantMessage, runInference, status, smoke };
 
 if (require.main === module) {
   const mode = process.argv[2] || 'status';
-  (mode === 'smoke' ? smoke() : status()).then(x => console.log(JSON.stringify(x, null, 2)));
+  (mode === 'smoke' ? smoke() : status()).then((x) => console.log(JSON.stringify(x, null, 2)));
 }

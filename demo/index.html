@@ -3,56 +3,68 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Verifiable Operator Copilot — Demo</title>
+  <title>Verifiable Debate Arena — EigenAI Judge Demo</title>
   <style>
-    body { font-family: Inter, system-ui, sans-serif; margin: 24px; max-width: 900px; line-height: 1.5; }
-    code, pre { background: #111; color: #e6f1ff; padding: 2px 6px; border-radius: 6px; }
+    body { font-family: Inter, system-ui, sans-serif; margin: 24px; max-width: 980px; line-height: 1.5; }
+    code, pre { background: #10151f; color: #e7f0ff; padding: 2px 6px; border-radius: 6px; }
     pre { padding: 12px; overflow: auto; }
-    .ok { color: #0a7f2e; font-weight: 700; }
-    .card { border: 1px solid #ddd; border-radius: 10px; padding: 14px; margin: 12px 0; }
+    .ok { color: #0b7f34; font-weight: 700; }
+    .card { border: 1px solid #e4e7ec; border-radius: 12px; padding: 14px; margin: 12px 0; }
   </style>
 </head>
 <body>
-  <h1>Verifiable Operator Copilot — Demo</h1>
-  <p>Deterministic operator agent with signed run attestations for reproducible, multi-party trust.</p>
+  <h1>Verifiable Debate Arena (AI Judge)</h1>
+  <p>Challenge-ready demo for EigenCloud: deterministic EigenAI judging, signed verdict artifacts, replayability, and sovereign-lite autonomous operation.</p>
 
   <div class="card">
-    <h2>What this demo proves</h2>
+    <h2>What this proves</h2>
     <ul>
-      <li>Deterministic run over Command Center snapshot</li>
-      <li>SHA-256 hashes for <code>code + input + output</code></li>
-      <li>Signed run manifest with wallet identity</li>
-      <li>Independent signature verification</li>
+      <li>Input = prompt + 2+ candidate arguments</li>
+      <li>Deterministic EigenAI judge scoring (fixed seed + model)</li>
+      <li>Signed verdict artifact (winner, per-debater scores, rubric, reasoning)</li>
+      <li>Verifiability bundle (input hash, seed, model, output hash, signatures, replay command)</li>
+      <li>Autonomous queue processing through existing watchdog loop</li>
     </ul>
   </div>
 
   <div class="card">
-    <h2>Run it yourself</h2>
-    <pre>git clone https://github.com/Halldon/command-center.git
-cd command-center/eigen-verifiable-agent
-./run_all.sh</pre>
+    <h2>Quickstart</h2>
+    <pre>git clone https://github.com/Halldon/verifiable-operator-copilot.git
+cd verifiable-operator-copilot
+npm install
+
+# one-command challenge validation (clean-state + replay checks + audit report)
+npm run debate:demo</pre>
   </div>
 
   <div class="card">
-    <h2>Expected verify result</h2>
-    <pre>{
-  "ok": true,
-  "checks": {
-    "messageMatches": true,
-    "recoveredMatchesRecorded": true,
-    "recoveredMatchesStoredRecovered": true
-  }
-}</pre>
-    <p class="ok">✅ End-to-end verification passes</p>
+    <h2>Manual run</h2>
+    <pre># run one debate
+npm run debate:run -- --input demo/debate_sample.json --seed 2026 --run-id demo-main
+
+# verify cryptographic integrity of produced artifacts
+npm run debate:verify -- --bundle artifacts/debate/runs/demo-main/verifiability_bundle.json
+
+# replay and compare output hash against previous run
+npm run debate:replay -- --bundle artifacts/debate/runs/demo-main/verifiability_bundle.json</pre>
+  </div>
+
+  <div class="card">
+    <h2>Expected audit outcome</h2>
+    <pre>- deterministic replay #1: PASS
+- deterministic replay #2: PASS
+- negative seed test: PASS
+- grant token + usage evidence: PASS</pre>
+    <p class="ok">✅ End-to-end verifiable debate pipeline validated</p>
   </div>
 
   <div class="card">
     <h2>Artifacts</h2>
     <ul>
-      <li><a href="https://github.com/Halldon/command-center/tree/main/eigen-verifiable-agent">Source folder</a></li>
-      <li><a href="https://raw.githubusercontent.com/Halldon/command-center/main/eigen-verifiable-agent/artifacts/run_manifest.json">run_manifest.json</a></li>
-      <li><a href="https://raw.githubusercontent.com/Halldon/command-center/main/eigen-verifiable-agent/artifacts/run_manifest.sig.json">run_manifest.sig.json</a></li>
-      <li><a href="https://raw.githubusercontent.com/Halldon/command-center/main/eigen-verifiable-agent/artifacts/agent_output.json">agent_output.json</a></li>
+      <li><a href="https://github.com/Halldon/verifiable-operator-copilot/tree/main/src">Implementation scripts</a></li>
+      <li><a href="https://github.com/Halldon/verifiable-operator-copilot/blob/main/docs/challenge_readiness_audit.md">Challenge readiness audit</a></li>
+      <li><a href="https://github.com/Halldon/verifiable-operator-copilot/tree/main/artifacts/debate/challenge-audit/latest">Determinism evidence bundle</a></li>
+      <li><a href="https://github.com/Halldon/verifiable-operator-copilot/blob/main/docs/submission_copy.md">Submission-ready copy</a></li>
     </ul>
   </div>
 </body>

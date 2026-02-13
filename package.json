@@ -19,7 +19,13 @@
     "auto:once": "node src/autonomous_once.js",
     "auto:watchdog": "node src/autonomous_watchdog.js",
     "proof:report": "node src/proof_report.js",
-    "auto:prove": "npm run auto:once && npm run proof:report"
+    "auto:prove": "npm run auto:once && npm run proof:report",
+    "debate:run": "node src/debate_run.js",
+    "debate:verify": "node src/debate_verify.js",
+    "debate:replay": "node src/debate_replay.js",
+    "debate:auto": "node src/debate_autonomous_cycle.js",
+    "debate:audit": "node src/debate_challenge_audit.js",
+    "debate:demo": "node src/debate_challenge_audit.js"
   },
   "keywords": [],
   "author": "",

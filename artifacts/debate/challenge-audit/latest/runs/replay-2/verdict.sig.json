@@ -1,0 +1,7 @@
+{
+  "signedAt": "2026-02-13T21:58:56.160Z",
+  "signerAddress": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+  "recoveredAddress": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+  "message": "Eigen Verifiable Debate Verdict\nrun_id:replay-2\noutput_sha256:ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee",
+  "signature": "0x1c148ee836b2c887bcb5efde9444049341604494fedb4e0a2523cd3fbc4951a62f28e1afa01c35cf0cef11fa483ef0cb5df169e581d7774437c260579c34e1531b"
+}

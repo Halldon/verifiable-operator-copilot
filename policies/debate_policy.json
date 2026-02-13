@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "name": "verifiable-debate-policy",
+  "inference": {
+    "allowedModels": [
+      "gpt-oss-120b-f16",
+      "qwen3-32b-128k-bf16"
+    ],
+    "defaultModel": "gpt-oss-120b-f16",
+    "defaultSeed": 2026,
+    "temperature": 0,
+    "maxTokens": 1800
+  },
+  "limits": {
+    "minDebaters": 2,
+    "maxDebaters": 6,
+    "maxPromptChars": 2000,
+    "maxArgumentChars": 4000,
+    "maxTotalInputChars": 22000,
+    "maxReasonChars": 600,
+    "maxRunsPerAutonomousCycle": 1
+  },
+  "defaultRubric": [
+    {
+      "id": "logic",
+      "label": "Logical coherence",
+      "weight": 0.4
+    },
+    {
+      "id": "evidence",
+      "label": "Use of evidence",
+      "weight": 0.35
+    },
+    {
+      "id": "relevance",
+      "label": "Relevance to prompt",
+      "weight": 0.25
+    }
+  ],
+  "runtime": {
+    "runsDir": "artifacts/debate/runs",
+    "inboxDir": "artifacts/debate/inbox",
+    "processedDir": "artifacts/debate/processed",
+    "failedDir": "artifacts/debate/failed"
+  },
+  "forbiddenActions": [
+    "network_calls_outside_eigenai",
+    "manual_result_overrides",
+    "silent_policy_bypass"
+  ]
+}

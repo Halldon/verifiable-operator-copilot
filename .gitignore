@@ -1,5 +1,12 @@
 node_modules/
 .DS_Store
 governance/approver-local-secrets.json
+governance/debate-autonomy-state.json
 treasury/*
 !treasury/.gitkeep
+
+# Debate runtime queues/results (volatile)
+artifacts/debate/runs/
+artifacts/debate/inbox/
+artifacts/debate/processed/
+artifacts/debate/failed/

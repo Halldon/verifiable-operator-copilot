@@ -23,7 +23,10 @@
       "read_snapshot",
       "rank_attention",
       "emit_manifest",
-      "append_provenance_log"
+      "append_provenance_log",
+      "evaluate_debate_candidates",
+      "emit_signed_debate_verdict",
+      "append_debate_provenance_log"
     ],
     "forbiddenActions": [
       "delete_files",

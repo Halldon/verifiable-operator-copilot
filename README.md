@@ -1,117 +1,97 @@
-# Verifiable Operator Copilot
+# Verifiable Operator Copilot → Verifiable Debate Arena
 
-Standalone verifiable-agent + sovereign-lite demo.
+Challenge-ready standalone implementation of **EigenCloud Verifiable AI Judge**:
 
-## What this is
-
-This project demonstrates two layers:
-
-1. **Verifiable execution**
-   - deterministic run over snapshot input
-   - SHA-256 hashes for code/input/output
-   - signed run manifest
-   - independent signature verification
-
-2. **Sovereign-lite governance**
-   - policy-defined approvers + threshold
-   - timelocked upgrade proposals
-   - append-only governance event log with hash chaining
-   - autonomous cycle runner that appends signed provenance
+- accepts a debate prompt + 2+ candidate arguments
+- runs deterministic judging via **EigenAI grant-auth flow**
+- emits a **signed verdict artifact**
+- emits a **verifiability bundle** (input/output hashes, model, seed, signatures, replay command)
+- integrates with the existing sovereign-lite autonomous/watchdog loop
 
 ---
 
-## Verifiable run
+## Quickstart
 
 ```bash
 cd /Users/j/.openclaw/workspace/verifiable-operator-copilot
 npm install
-./run_all.sh
+
+# first-time only: ensure treasury wallet + EigenAI grant are available
+npm run eigenai:status
+
+# one-command end-to-end challenge validation
+npm run debate:demo
 ```
 
+If grant status is false, request credits at https://determinal.eigenarcade.com/ and retry.
+
 Outputs:
-- `artifacts/agent_output.json`
-- `artifacts/run_manifest.json`
-- `artifacts/run_manifest.sig.json`
+- `artifacts/debate/challenge-audit/latest/challenge_audit_report.json`
+- `docs/challenge_readiness_audit.md`
+- full run artifacts under `artifacts/debate/challenge-audit/latest/runs/*`
 
 ---
 
-## Sovereign-lite governance flow
+## Manual debate run
 
-### 1) Create a proposal
+```bash
+npm run debate:run -- --input demo/debate_sample.json --seed 2026 --run-id demo-main
+npm run debate:verify -- --bundle artifacts/debate/runs/demo-main/verifiability_bundle.json
+npm run debate:replay -- --bundle artifacts/debate/runs/demo-main/verifiability_bundle.json
+```
+
+Core artifacts per run:
+- `debate_input.json`
+- `judge_prompt.txt`
+- `judge_response.json`
+- `verdict.json`
+- `verdict.sig.json`
+- `verifiability_bundle.json`
+- `replay.sh`
+
+---
+
+## Autonomous operation (watchdog integrated)
+
+- `src/autonomous_once.js` now executes `src/debate_autonomous_cycle.js`
+- queue new jobs in `artifacts/debate/inbox/*.json`
+- process runs are policy-limited by `policies/debate_policy.json`
+
+Watchdog command:
+```bash
+npm run auto:watchdog
+```
+
+---
+
+## Sovereign-lite alignment
+
+Debate runs append to the existing governance provenance chain (`governance/events.jsonl`) via event type:
+- `debate_verdict_emitted`
+
+Each verifiability bundle includes:
+- sovereign policy hash
+- debate policy hash
+- governance event hash / previous hash
+
+---
+
+## Challenge docs
+
+- `docs/challenge_checklist.md`
+- `docs/challenge_readiness_audit.md`
+- `docs/submission_copy.md`
+- user-facing demo page: `demo/index.html`
+
+---
+
+## Existing sovereign-lite governance flow (unchanged)
+
 ```bash
 npm run gov:propose -- --title "Upgrade scoring weights" --target src/run_agent.js --reason "Tune ranking" --timelock-seconds 60
-```
-
-### 2) Collect approvals (policy allowlist)
-```bash
 npm run gov:approve -- --proposal <proposalId> --approver james
 npm run gov:approve -- --proposal <proposalId> --approver ops-peer
-```
-
-### 3) Enact after timelock expires
-```bash
 npm run gov:enact -- --proposal <proposalId>
 ```
 
-### 4) Run autonomous sovereign cycle
-```bash
-npm run run:cycle
-```
-
-Governance/provenance files:
-- `policies/sovereign_policy.json`
-- `governance/proposals/*.json`
-- `governance/approvals/*.json`
-- `governance/events.jsonl` (hash-chained append-only log)
-
-This is **sovereign-lite** (owner-minimized process controls), not fully ownerless sovereignty.
-
----
-
-## Agent-owned treasury (max sovereignty in this environment)
-
-### Bootstrap treasury wallet custody
-```bash
-npm run treasury:bootstrap
-```
-Creates:
-- encrypted keystore at `treasury/agent-treasury-keystore.json`
-- metadata at `treasury/agent-treasury-meta.json`
-- passphrase stored in macOS Keychain (`security`), not plain text in repo
-
-### Configure funding recipient
-Edit `policies/treasury_policy.json` and replace:
-- `EIGEN_CREDITS_FUNDING_ADDRESS_PLACEHOLDER`
-
-### Sign funding intent (policy-gated)
-```bash
-npm run treasury:sign-intent -- --recipient <address> --usd 5 --reason low-credits
-```
-This enforces:
-- allowlisted recipient
-- max USD per tx from policy
-- key custody via encrypted keystore + keychain passphrase
-
-### Autonomous autofund cycle
-```bash
-npm run treasury:autofund
-```
-If credits are below threshold, it signs a funding intent and appends to `treasury/funding-intents.jsonl`.
-
-### Execute transfer from treasury wallet (policy-gated)
-Native transfer:
-```bash
-npm run treasury:transfer -- --recipient <allowlisted_addr> --rpc <base_rpc_url> --native 0.001
-```
-ERC20 transfer:
-```bash
-npm run treasury:transfer -- --recipient <allowlisted_addr> --rpc <base_rpc_url> --token <erc20_addr> --amount <raw_units>
-```
-Use `--dry-run` first.
-
-Gasless-first mode:
-- Configure `policies/treasury_policy.json` → `execution.gaslessRelay.relayUrl`
-- Set env var `ETHGAS_API_KEY` (or the configured `apiKeyEnv`)
-- Executor will try gasless relay first, then fallback onchain if enabled.
-
-> Note: direct funding of external credit accounts still needs provider-specific destination/API wiring; this repo now supports sovereign custody + policy-bound signed intents + gasless-first/onchain-fallback execution.
+This repository remains sovereign-lite (policy, timelock, multi-approver provenance), now extended with verifiable debate judging.

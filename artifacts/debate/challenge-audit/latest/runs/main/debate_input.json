@@ -1,0 +1,42 @@
+{
+  "prompt": "Should a city prioritize public transit expansion over private car infrastructure for the next decade?",
+  "context": "The city has limited budget, increasing congestion, and climate targets.",
+  "candidates": [
+    {
+      "id": "transit-first",
+      "name": "Transit First",
+      "argument": "Prioritizing transit moves more people per lane, lowers emissions, and improves mobility for residents who cannot afford cars. Dedicated bus lanes and rail reduce congestion by offering viable alternatives. Upfront capital costs are high, but long-term operating efficiency and reduced road maintenance pressure improve fiscal sustainability."
+    },
+    {
+      "id": "car-first",
+      "name": "Car Infrastructure First",
+      "argument": "Expanding roads and parking directly addresses current bottlenecks for commuters and freight. Drivers already depend on car infrastructure, so immediate expansion can reduce travel delays quickly. However, this strategy can induce demand and may conflict with long-term climate targets unless paired with strict emissions mitigation and pricing policies."
+    },
+    {
+      "id": "hybrid-plan",
+      "name": "Hybrid Sequenced Plan",
+      "argument": "Use a phased strategy: near-term targeted road fixes for freight chokepoints while allocating most capital to bus rapid transit and signal priority. This balances immediate reliability with long-term mode shift, and keeps spending disciplined through milestone-based rollouts. The plan explicitly ties funding to congestion and emissions outcomes."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "logic",
+      "label": "Logical coherence",
+      "weight": 0.4
+    },
+    {
+      "id": "evidence",
+      "label": "Use of concrete evidence and tradeoffs",
+      "weight": 0.35
+    },
+    {
+      "id": "relevance",
+      "label": "Direct relevance to city objective",
+      "weight": 0.25
+    }
+  ],
+  "metadata": {
+    "source": "challenge-demo",
+    "version": "1.0.0"
+  }
+}

@@ -28,6 +28,14 @@ function saveState(s) {
       out.steps.push({ step: 'autofund_check', ok: false, note: 'non-fatal block (e.g., placeholder recipient)' });
     }
 
+    out.steps.push({ step: 'debate_autonomous_cycle' });
+    try {
+      execSync('node src/debate_autonomous_cycle.js', { cwd: root, stdio: 'inherit' });
+      out.steps.push({ step: 'debate_autonomous_cycle', ok: true });
+    } catch (e) {
+      out.steps.push({ step: 'debate_autonomous_cycle', ok: false, note: 'non-fatal (e.g., malformed queue item)' });
+    }
+
     out.steps.push({ step: 'inference_smoke', data: await smoke() });
     out.ok = true;
   } catch (e) {

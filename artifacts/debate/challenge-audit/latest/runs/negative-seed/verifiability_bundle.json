@@ -1,0 +1,63 @@
+{
+  "bundleVersion": "1.0.0",
+  "runId": "negative-seed",
+  "generatedAt": "2026-02-13T21:59:04.678Z",
+  "input": {
+    "path": "artifacts/debate/challenge-audit/latest/runs/negative-seed/debate_input.json",
+    "hashSha256": "4c830af5a7279af75aa9dbdd379b4dad93cf696bab21b9bd9091c9759d93c495",
+    "promptHashSha256": "b56b91bb53bada5d595701ca2f976131068915def5e9e7ba140158a0cd7aec1e"
+  },
+  "output": {
+    "verdictPath": "artifacts/debate/challenge-audit/latest/runs/negative-seed/verdict.json",
+    "verdictSignaturePath": "artifacts/debate/challenge-audit/latest/runs/negative-seed/verdict.sig.json",
+    "hashSha256": "97b84af0366c05169c5c05bcd714e886cace1bbdf2e48a9243877499a71abebd"
+  },
+  "inference": {
+    "model": "gpt-oss-120b-f16",
+    "seed": 2027,
+    "responseId": "019c5903-a8f3-7ce6-9bfc-4716829bf472",
+    "chainId": 1,
+    "usage": {
+      "completion_tokens": 857,
+      "prompt_tokens": 506,
+      "total_tokens": 1363
+    },
+    "eigenSignature": "5ae8c7819d9923c70e9df6f83ed42e764262f153fd654ef08147ab2dcc4eb7db5dbe784839e837578675da05c3507a770aee7aecf67dafb10132a23eb9b4c8fb1b",
+    "finishReason": "stop"
+  },
+  "signatures": {
+    "localVerdictSigner": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+    "localVerdictSignature": "0x7c6cc27de9bd6840870ec3d92d49599bd144dd19f1b4190cf43b90770c8a5dd70ac3a1bee76d8e9a022eca40d049a1261e44c4c081cde61f9133c09070a5f1061b",
+    "eigenResponseSignature": "5ae8c7819d9923c70e9df6f83ed42e764262f153fd654ef08147ab2dcc4eb7db5dbe784839e837578675da05c3507a770aee7aecf67dafb10132a23eb9b4c8fb1b"
+  },
+  "grantEvidence": {
+    "walletAddress": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+    "before": {
+      "success": true,
+      "tokenCount": 970526,
+      "address": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+      "hasGrant": true
+    },
+    "after": {
+      "success": true,
+      "tokenCount": 968726,
+      "address": "0x581E81C3dc9F558D29dCd9877A828Cd61D7AaAeD",
+      "hasGrant": true
+    },
+    "tokenDelta": 1800,
+    "usageTotalTokens": 1363
+  },
+  "governance": {
+    "sovereignPolicyHash": "8b0445aa10f8c9527565380fc9f048dad90f649389d06031b7c9e6ea98554e2c",
+    "debatePolicyHash": "943e576406746a50554f3f41aa8b0242d62e459e66ba170c0590ae3ecbb01523",
+    "latestEventHashBeforeRun": "e7ad19adfdcb62f21325716867e14411df1953904cf7a33cbc6f884993836e3f",
+    "eventHash": "c4207795c6b64e62d884a63e98f653d63d283a9b89a47890b8ffdd8f44ef4702",
+    "prevHash": "e7ad19adfdcb62f21325716867e14411df1953904cf7a33cbc6f884993836e3f"
+  },
+  "replayCommand": "node src/debate_replay.js --bundle artifacts/debate/challenge-audit/latest/runs/negative-seed/verifiability_bundle.json",
+  "rawArtifacts": {
+    "judgePromptPath": "artifacts/debate/challenge-audit/latest/runs/negative-seed/judge_prompt.txt",
+    "judgeResponsePath": "artifacts/debate/challenge-audit/latest/runs/negative-seed/judge_response.json",
+    "modelEnvelopePath": "artifacts/debate/challenge-audit/latest/runs/negative-seed/model_verdict_envelope.json"
+  }
+}

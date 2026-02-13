@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-02-13T21:59:04.694Z",
+  "workspace": "/Users/j/.openclaw/workspace/verifiable-operator-copilot",
+  "cleanStatePath": "artifacts/debate/challenge-audit/latest",
+  "sampleInput": "demo/debate_sample.json",
+  "model": "gpt-oss-120b-f16",
+  "baselineSeed": 2026,
+  "checks": [
+    {
+      "requirement": "Clean-state top-to-bottom run completes",
+      "pass": true,
+      "evidence": "Reset artifacts/debate/challenge-audit/latest then executed 4 full runs"
+    },
+    {
+      "requirement": "Deterministic replay check #1",
+      "pass": true,
+      "evidence": "main=ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee replay-1=ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee"
+    },
+    {
+      "requirement": "Deterministic replay check #2",
+      "pass": true,
+      "evidence": "main=ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee replay-2=ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee"
+    },
+    {
+      "requirement": "Negative check (changed seed changes result)",
+      "pass": true,
+      "evidence": "main=ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee negative=97b84af0366c05169c5c05bcd714e886cace1bbdf2e48a9243877499a71abebd"
+    },
+    {
+      "requirement": "Grant token check + usage evidence present",
+      "pass": true,
+      "evidence": "beforeHasGrant=true aggregateUsageTokens=5044 aggregateTokenDelta=7200"
+    },
+    {
+      "requirement": "Signed verdict artifact verifies",
+      "pass": true,
+      "evidence": "debate_verify.js passed for baseline run"
+    }
+  ],
+  "runs": [
+    {
+      "label": "baseline",
+      "runId": "main",
+      "seed": 2026,
+      "winnerId": "hybrid-plan",
+      "outputHash": "ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee"
+    },
+    {
+      "label": "replay-1",
+      "runId": "replay-1",
+      "seed": 2026,
+      "winnerId": "hybrid-plan",
+      "outputHash": "ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee"
+    },
+    {
+      "label": "replay-2",
+      "runId": "replay-2",
+      "seed": 2026,
+      "winnerId": "hybrid-plan",
+      "outputHash": "ac7b9f0a865ced8a91f39d069c4ccebaa9852347c146ac00ea77f62964501bee"
+    },
+    {
+      "label": "negative-seed",
+      "runId": "negative-seed",
+      "seed": 2027,
+      "winnerId": "hybrid-plan",
+      "outputHash": "97b84af0366c05169c5c05bcd714e886cace1bbdf2e48a9243877499a71abebd"
+    }
+  ],
+  "grantEvidence": {
+    "beforeHasGrant": true,
+    "afterHasGrant": true,
+    "beforeTokens": 975926,
+    "afterTokens": 968726,
+    "aggregateTokenDelta": 7200,
+    "aggregateUsageTokens": 5044
+  }
+}
